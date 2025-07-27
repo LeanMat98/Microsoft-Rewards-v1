@@ -1,0 +1,44 @@
+from time import sleep
+import pyautogui
+import keyboard  # pip install keyboard
+
+lista = ['sustentabilidade', 'inteligencia artificial', 'mudancas climaticas', 'economia circular', 'big data',
+         'criptomoedas',
+         'cultura digital', 'democracia', 'globalizacao', 'pandemia', 'ciencia de dados', 'etica', 'guerra cibernetica',
+         'biotecnologia',
+         'algoritmos', 'saude mental', 'inovacoes educacionais', 'astronomia', 'genetica', 'economia criativa',
+         'neurociencia', 'energia renovavel',
+         'ciberseguranca', 'blockchain', 'privacidade digital', 'transumanismo', 'antropoceno', 'e-commerce',
+         'realidade aumentada'] #listas de palavras a serem pesquisadas no navegador
+
+pause = False
+
+def toggle_pause():
+    global pause
+    pause = not pause
+    print("PAUSADO" if pause else "CONTINUANDO") #função para pausar o programa
+
+keyboard.add_hotkey('space', toggle_pause)
+
+pyautogui.press('winleft')
+sleep(0.3)
+pyautogui.write('edge')
+pyautogui.press('enter')
+sleep(0.3)
+pyautogui.write('bing.com')
+pyautogui.press('enter')
+sleep(0.3)
+pyautogui.moveTo(910, 305)
+pyautogui.write('Tecnologia')
+pyautogui.press('enter')
+sleep(5)
+
+for c in lista: #percorre a lista para escrever as palavras
+    # Se estiver pausado, espera aqui até continuar
+    while pause:
+        sleep(0.1)
+    pyautogui.moveTo(625, 125)
+    pyautogui.hotkey('ctrl', 'a')
+    pyautogui.write(c, interval=0.1)
+    pyautogui.press('enter')
+    sleep(5) 
